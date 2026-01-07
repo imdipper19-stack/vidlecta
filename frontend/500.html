@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>500 - Server Error — VidLecta</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/design-system.css">
+    <link rel="stylesheet" href="/css/pages/error.css">
+</head>
+
+<body class="error-page">
+    <div class="error-container">
+        <a href="/" class="navbar-brand error-logo">
+            <svg width="40" height="40" viewBox="0 0 32 32" fill="none">
+                <rect width="32" height="32" rx="8" fill="url(#gradient)" />
+                <path d="M12 10L22 16L12 22V10Z" fill="white" />
+                <defs>
+                    <linearGradient id="gradient" x1="0" y1="0" x2="32" y2="32">
+                        <stop stop-color="#7c3aed" />
+                        <stop offset="1" stop-color="#3b82f6" />
+                    </linearGradient>
+                </defs>
+            </svg>
+            <span>VidLecta</span>
+        </a>
+
+        <div class="error-content">
+            <div class="error-code error-500">500</div>
+            <h1>Something Went Wrong</h1>
+            <p>We're experiencing technical difficulties. Our team has been notified and is working on a fix.</p>
+
+            <div class="error-actions">
+                <button class="btn btn-primary btn-lg" onclick="window.location.reload()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="23 4 23 10 17 10"></polyline>
+                        <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                    </svg>
+                    Try Again
+                </button>
+                <a href="/" class="btn btn-secondary btn-lg">
+                    Go Home
+                </a>
+            </div>
+
+            <div class="error-help">
+                <p>If the problem persists, <a href="mailto:support@vidlecta.com">contact support</a></p>
+            </div>
+        </div>
+
+        <!-- Decorative elements -->
+        <div class="error-decoration">
+            <div class="decoration-circle circle-1"></div>
+            <div class="decoration-circle circle-2"></div>
+            <div class="decoration-circle circle-3"></div>
+        </div>
+    </div>
+</body>
+
+</html>

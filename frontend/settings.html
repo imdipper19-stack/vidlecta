@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Settings — VidLecta</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/design-system.css">
+    <link rel="stylesheet" href="/css/pages/dashboard.css">
+    <link rel="stylesheet" href="/css/pages/settings.css">
+</head>
+
+<body>
+    <!-- Include Sidebar (same as dashboard) -->
+    <aside class="sidebar" id="sidebar">
+        <a href="/" class="sidebar-brand">
+            <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+                <rect width="32" height="32" rx="8" fill="url(#gradient)" />
+                <path d="M12 10L22 16L12 22V10Z" fill="white" />
+                <defs>
+                    <linearGradient id="gradient" x1="0" y1="0" x2="32" y2="32">
+                        <stop stop-color="#7c3aed" />
+                        <stop offset="1" stop-color="#3b82f6" />
+                    </linearGradient>
+                </defs>
+            </svg>
+            <span>VidLecta</span>
+        </a>
+
+        <nav class="sidebar-nav">
+            <a href="/dashboard.html" class="sidebar-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="14" width="7" height="7"></rect>
+                    <rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+                <span data-i18n="nav.dashboard">Dashboard</span>
+            </a>
+            <a href="/videos.html" class="sidebar-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                </svg>
+                <span data-i18n="nav.videos">My Videos</span>
+            </a>
+            <a href="/transcriptions.html" class="sidebar-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                </svg>
+                <span data-i18n="nav.transcriptions">Transcriptions</span>
+            </a>
+            <a href="/settings.html" class="sidebar-link active">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83"></path>
+                </svg>
+                <span data-i18n="nav.settings">Settings</span>
+            </a>
+        </nav>
+
+        <a href="#" class="sidebar-link" id="logout-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                <polyline points="16 17 21 12 16 7"></polyline>
+                <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+            <span data-i18n="nav.logout">Logout</span>
+        </a>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb">
+            <a href="/dashboard.html" data-i18n="nav.dashboard">Dashboard</a>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <span data-i18n="nav.settings">Settings</span>
+        </nav>
+
+        <h1 class="page-title" data-i18n="settings.title">Settings</h1>
+
+        <!-- Alerts -->
+        <div class="alert alert-success hidden" id="success-alert">
+            <span id="success-message" data-i18n="settings.save_success">Changes saved successfully!</span>
+        </div>
+        <div class="alert alert-error hidden" id="error-alert">
+            <span id="error-message"></span>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs" role="tablist">
+            <button class="tab active" data-tab="profile" role="tab" data-i18n="settings.tabs.profile">Profile</button>
+            <button class="tab" data-tab="account" role="tab" data-i18n="settings.tabs.account">Account</button>
+            <button class="tab" data-tab="security" role="tab" data-i18n="settings.tabs.security">Security</button>
+            <button class="tab" data-tab="preferences" role="tab"
+                data-i18n="settings.tabs.preferences">Preferences</button>
+        </div>
+
+        <!-- Profile Tab -->
+        <div class="tab-content active" id="tab-profile">
+            <div class="settings-card card">
+                <div class="card-body">
+                    <div class="settings-section">
+                        <h2 data-i18n="settings.profile.intro.title">Profile Information</h2>
+                        <p class="section-description" data-i18n="settings.profile.intro.desc">Update your photo and
+                            personal details.</p>
+
+                        <!-- Avatar -->
+                        <div class="avatar-section">
+                            <div class="avatar avatar-xl avatar-placeholder" id="settings-avatar">U</div>
+                            <div class="avatar-actions">
+                                <input type="file" id="avatar-input" accept="image/*" class="hidden">
+                                <button class="btn btn-secondary btn-sm"
+                                    onclick="document.getElementById('avatar-input').click()"
+                                    data-i18n="settings.profile.photo.change">
+                                    Change Photo
+                                </button>
+                                <button class="btn btn-secondary btn-sm" id="remove-avatar-btn"
+                                    data-i18n="settings.profile.photo.remove">
+                                    Remove
+                                </button>
+                            </div>
+                        </div>
+
+                        <form id="profile-form" class="settings-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="display_name" class="form-label"
+                                        data-i18n="settings.profile.fields.display_name">Display Name</label>
+                                    <input type="text" id="display_name" class="form-input" placeholder="John Doe">
+                                </div>
+                                <div class="form-group">
+                                    <label for="username" class="form-label"
+                                        data-i18n="settings.profile.fields.username">Username</label>
+                                    <input type="text" id="username" class="form-input" placeholder="johndoe">
+                                    <div class="form-hint" data-i18n="settings.profile.fields.username_hint">Your unique
+                                        @username</div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="bio" class="form-label" data-i18n="settings.profile.fields.bio">Bio</label>
+                                <textarea id="bio" class="form-input" rows="3" placeholder="Tell us about yourself..."
+                                    data-i18n-placeholder="settings.profile.fields.bio_placeholder"></textarea>
+                                <div class="form-hint" data-i18n="settings.profile.fields.bio_hint">Brief description
+                                    for your profile. Max 200 characters.</div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary"
+                                    data-i18n="settings.profile.fields.save">Save Changes</button>
+                                <button type="button" class="btn btn-secondary" onclick="window.location.reload()"
+                                    data-i18n="settings.profile.fields.cancel">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Account Tab -->
+        <div class="tab-content" id="tab-account">
+            <div class="settings-card card">
+                <div class="card-body">
+                    <div class="settings-section">
+                        <h2 data-i18n="settings.account.intro.title">Email Address</h2>
+                        <p class="section-description" data-i18n="settings.account.intro.desc">Manage your account
+                            email.</p>
+
+                        <form id="email-form" class="settings-form">
+                            <div class="form-group">
+                                <label for="current_email" class="form-label"
+                                    data-i18n="settings.account.fields.current_email">Current Email</label>
+                                <div class="input-with-badge">
+                                    <input type="email" id="current_email" class="form-input" readonly>
+                                    <span class="badge badge-success" id="email-verified-badge"
+                                        data-i18n="settings.account.fields.verified">Verified</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="new_email" class="form-label"
+                                    data-i18n="settings.account.fields.new_email">New Email</label>
+                                <input type="email" id="new_email" class="form-input"
+                                    placeholder="newemail@example.com">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email_password" class="form-label"
+                                    data-i18n="settings.account.fields.password_confirm">Confirm Password</label>
+                                <input type="password" id="email_password" class="form-input"
+                                    placeholder="Enter your password to confirm"
+                                    data-i18n-placeholder="settings.account.fields.confirm_placeholder">
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary"
+                                    data-i18n="settings.account.btn.update_email">Update Email</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="settings-divider"></div>
+
+                    <div class="settings-section danger-zone">
+                        <h2 data-i18n="settings.account.danger.title">Danger Zone</h2>
+                        <p class="section-description" data-i18n="settings.account.danger.desc">Irreversible and
+                            destructive actions.</p>
+
+                        <button class="btn btn-outline"
+                            style="color: var(--color-error); border-color: var(--color-error);"
+                            data-i18n="settings.account.danger.delete_btn">
+                            Delete Account
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Security Tab -->
+        <div class="tab-content" id="tab-security">
+            <div class="settings-card card">
+                <div class="card-body">
+                    <div class="settings-section">
+                        <h2 data-i18n="settings.security.password.title">Change Password</h2>
+                        <p class="section-description" data-i18n="settings.security.password.desc">Ensure your account
+                            stays secure.</p>
+
+                        <form id="password-form" class="settings-form">
+                            <div class="form-group">
+                                <label for="current_password" class="form-label"
+                                    data-i18n="settings.security.password.current">Current Password</label>
+                                <input type="password" id="current_password" class="form-input"
+                                    placeholder="••••••••••••">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="new_password" class="form-label"
+                                    data-i18n="settings.security.password.new">New Password</label>
+                                <input type="password" id="new_password" class="form-input" placeholder="••••••••••••">
+                                <div class="password-strength" id="password-strength">
+                                    <div class="password-strength-bar" id="password-strength-bar"></div>
+                                </div>
+                                <div class="password-strength-label" id="password-strength-label"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="confirm_new_password" class="form-label"
+                                    data-i18n="settings.security.password.confirm">Confirm New Password</label>
+                                <input type="password" id="confirm_new_password" class="form-input"
+                                    placeholder="••••••••••••">
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary"
+                                    data-i18n="settings.security.password.btn">Update Password</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="settings-divider"></div>
+
+                    <div class="settings-section">
+                        <h2 data-i18n="settings.security.2fa.title">Two-Factor Authentication</h2>
+                        <p class="section-description" data-i18n="settings.security.2fa.desc">Add an extra layer of
+                            security to your account.</p>
+
+                        <div class="toggle-setting">
+                            <div class="toggle-info">
+                                <h3 data-i18n="settings.security.2fa.app_title">Authenticator App</h3>
+                                <p data-i18n="settings.security.2fa.app_desc">Use an authentication app to generate
+                                    one-time codes.</p>
+                            </div>
+                            <label class="toggle">
+                                <input type="checkbox" id="2fa-toggle">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Preferences Tab -->
+        <div class="tab-content" id="tab-preferences">
+            <div class="settings-card card">
+                <div class="card-body">
+                    <div class="settings-section">
+                        <h2 data-i18n="settings.preferences.language.title">Language</h2>
+                        <p class="section-description" data-i18n="settings.preferences.language.desc">Select your
+                            preferred language.</p>
+
+                        <div class="form-group">
+                            <select id="language-select" class="form-input">
+                                <option value="en">🇺🇸 English</option>
+                                <option value="ru">🇷🇺 Русский</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="settings-divider"></div>
+
+                    <div class="settings-section">
+                        <h2 data-i18n="settings.preferences.appearance.title">Appearance</h2>
+                        <p class="section-description" data-i18n="settings.preferences.appearance.desc">Customize how
+                            VidLecta looks.</p>
+
+                        <div class="theme-options">
+                            <label class="theme-option active" data-theme="dark">
+                                <input type="radio" name="theme" value="dark" checked>
+                                <div class="theme-preview dark"></div>
+                                <span data-i18n="settings.preferences.appearance.dark">Dark</span>
+                            </label>
+                            <label class="theme-option" data-theme="light">
+                                <input type="radio" name="theme" value="light">
+                                <div class="theme-preview light"></div>
+                                <span data-i18n="settings.preferences.appearance.light">Light</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="settings-divider"></div>
+
+                    <div class="settings-section">
+                        <h2 data-i18n="settings.preferences.notifications.title">Notifications</h2>
+                        <p class="section-description" data-i18n="settings.preferences.notifications.desc">Manage your
+                            notification preferences.</p>
+
+                        <div class="toggle-setting">
+                            <div class="toggle-info">
+                                <h3 data-i18n="settings.preferences.notifications.email.title">Email Notifications</h3>
+                                <p data-i18n="settings.preferences.notifications.email.desc">Receive emails when your
+                                    transcriptions are ready.</p>
+                            </div>
+                            <label class="toggle">
+                                <input type="checkbox" id="email-notifications" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+
+                        <div class="toggle-setting">
+                            <div class="toggle-info">
+                                <h3 data-i18n="settings.preferences.notifications.updates.title">Product Updates</h3>
+                                <p data-i18n="settings.preferences.notifications.updates.desc">Get notified about new
+                                    features and updates.</p>
+                            </div>
+                            <label class="toggle">
+                                <input type="checkbox" id="product-updates">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-actions mt-6">
+                        <button class="btn btn-primary" id="save-preferences"
+                            data-i18n="settings.preferences.btn.save">Save Preferences</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="/js/settings.js"></script>
+    <script src="/js/i18n.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Core Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- SEO Meta Tags -->
+    <title>VidLecta — Transform Videos into Smart Notes | AI Transcription for Students</title>
+    <meta name="description"
+        content="Convert lecture videos to text transcriptions and smart summaries instantly. AI-powered platform for students. Supports English and Russian. Start free today!">
+    <meta name="keywords"
+        content="video to text, transcription, student notes, lecture transcription, AI summary, видео в текст, транскрипция видео, конспекты лекций">
+    <meta name="author" content="VidLecta">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://vidlecta.com/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vidlecta.com/">
+    <meta property="og:title" content="VidLecta — Transform Videos into Smart Notes">
+    <meta property="og:description"
+        content="Convert lecture videos to text transcriptions and smart summaries instantly. AI-powered platform for students.">
+    <meta property="og:image" content="https://vidlecta.com/assets/images/og-image.png">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="ru_RU">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://vidlecta.com/">
+    <meta name="twitter:title" content="VidLecta — Transform Videos into Smart Notes">
+    <meta name="twitter:description"
+        content="Convert lecture videos to text transcriptions and smart summaries instantly.">
+    <meta name="twitter:image" content="https://vidlecta.com/assets/images/og-image.png">
+
+    <!-- Hreflang for multilingual -->
+    <link rel="alternate" hreflang="en" href="https://vidlecta.com/">
+    <link rel="alternate" hreflang="ru" href="https://vidlecta.com/ru/">
+    <link rel="alternate" hreflang="x-default" href="https://vidlecta.com/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/design-system.css">
+    <link rel="stylesheet" href="/css/pages/landing.css">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "VidLecta",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Web",
+        "description": "AI-powered video to text transcription and smart summaries for students",
+        "url": "https://vidlecta.com",
+        "author": {
+            "@type": "Organization",
+            "name": "VidLecta"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "description": "Free tier with 60 minutes per month"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "ratingCount": "2500"
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="navbar-container">
+            <a href="/" class="navbar-brand" aria-label="VidLecta Home">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="32" height="32" rx="8" fill="url(#gradient)" />
+                    <path d="M12 10L22 16L12 22V10Z" fill="white" />
+                    <defs>
+                        <linearGradient id="gradient" x1="0" y1="0" x2="32" y2="32">
+                            <stop stop-color="#7c3aed" />
+                            <stop offset="1" stop-color="#3b82f6" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <span>VidLecta</span>
+            </a>
+
+            <ul class="navbar-nav" role="menubar">
+                <li role="none"><a href="#features" class="navbar-link" role="menuitem"
+                        data-i18n="nav.features">Features</a></li>
+                <li role="none"><a href="#pricing" class="navbar-link" role="menuitem"
+                        data-i18n="nav.pricing">Pricing</a></li>
+                <li role="none"><a href="#about" class="navbar-link" role="menuitem" data-i18n="nav.about">About</a>
+                </li>
+                <li role="none"><a href="#faq" class="navbar-link" role="menuitem" data-i18n="nav.faq">FAQ</a></li>
+            </ul>
+
+            <div class="navbar-actions">
+                <!-- Language Switcher -->
+                <div class="lang-switcher">
+                    <button class="lang-btn" data-lang-switch="en" title="English">🇺🇸</button>
+                    <button class="lang-btn" data-lang-switch="ru" title="Русский">🇷🇺</button>
+                </div>
+                <a href="/login.html" class="btn btn-secondary" data-i18n="nav.login">Login</a>
+                <a href="/register.html" class="btn btn-primary" data-i18n="nav.getStarted">Get Started Free</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero section" id="hero">
+        <div class="container">
+            <div class="hero-content animate-slideUp">
+                <h1 class="hero-title" data-i18n="hero.title">
+                    Transform Your <span class="text-gradient">Videos</span><br>
+                    into Smart Notes
+                </h1>
+                <p class="hero-subtitle" data-i18n="hero.subtitle">
+                    AI-powered transcription and intelligent summaries. The ultimate tool for students
+                    to effortlessly capture and organize video content in English and Russian.
+                </p>
+                <div class="hero-actions">
+                    <a href="/register.html" class="btn btn-primary btn-lg">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                        <span data-i18n="hero.cta">Get Started Free</span>
+                    </a>
+                    <a href="#demo" class="btn btn-secondary btn-lg">
+                        <span data-i18n="hero.watchDemo">Watch Demo</span>
+                    </a>
+                </div>
+                <p class="hero-note">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span data-i18n="hero.noCreditCard">No credit card required</span> • <span
+                        data-i18n="hero.freeMinutes">60 free minutes per month</span>
+                </p>
+            </div>
+
+            <div class="hero-visual animate-fadeIn">
+                <div class="hero-mockup">
+                    <div class="mockup-header">
+                        <span class="mockup-dot"></span>
+                        <span class="mockup-dot"></span>
+                        <span class="mockup-dot"></span>
+                    </div>
+                    <div class="mockup-content">
+                        <div class="mockup-sidebar">
+                            <div class="mockup-nav-item active"></div>
+                            <div class="mockup-nav-item"></div>
+                            <div class="mockup-nav-item"></div>
+                        </div>
+                        <div class="mockup-main">
+                            <div class="mockup-video">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                </svg>
+                            </div>
+                            <div class="mockup-transcript">
+                                <div class="mockup-line"></div>
+                                <div class="mockup-line short"></div>
+                                <div class="mockup-line"></div>
+                                <div class="mockup-line medium"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Language flags -->
+                <div class="hero-languages">
+                    <div class="language-badge">
+                        <span class="flag">🇺🇸</span> <span data-i18n="common.english">English</span>
+                    </div>
+                    <div class="language-badge">
+                        <span class="flag">🇷🇺</span> <span data-i18n="common.russian">Русский</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="section" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-i18n="features.title">Powerful Features for <span
+                        class="text-gradient">Students</span></h2>
+                <p class="section-subtitle" data-i18n="features.subtitle">
+                    Everything you need to turn hours of lecture videos into organized, searchable notes.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-4">
+                <div class="feature-card card">
+                    <div class="card-body">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="17 8 12 3 7 8"></polyline>
+                                <line x1="12" y1="3" x2="12" y2="15"></line>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title" data-i18n="features.upload.title">Easy Upload</h3>
+                        <p class="feature-text" data-i18n="features.upload.description">
+                            Drag & drop videos or paste YouTube links. Supports MP4, MOV, AVI, WebM, and audio files.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="feature-card card">
+                    <div class="card-body">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
+                                <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                                <line x1="12" y1="19" x2="12" y2="22"></line>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title" data-i18n="features.transcription.title">AI Transcription</h3>
+                        <p class="feature-text" data-i18n="features.transcription.description">
+                            Accurate speech-to-text powered by OpenAI Whisper. Works great with accents and technical
+                            terms.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="feature-card card">
+                    <div class="card-body">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                <path
+                                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title" data-i18n="features.multilang.title">Multi-language</h3>
+                        <p class="feature-text" data-i18n="features.multilang.description">
+                            Transcribe in English or Russian. Auto-detect language or choose manually for best results.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="feature-card card">
+                    <div class="card-body">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title" data-i18n="features.summary.title">Smart Summaries</h3>
+                        <p class="feature-text" data-i18n="features.summary.description">
+                            Get AI-generated key points and summaries. Perfect for quick review before exams.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="section section-alt" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-i18n="howItWorks.title">How It Works</h2>
+                <p class="section-subtitle" data-i18n="howItWorks.subtitle">
+                    Three simple steps to transform any video into organized notes.
+                </p>
+            </div>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title" data-i18n="howItWorks.step1.title">Upload Video</h3>
+                    <p class="step-text" data-i18n="howItWorks.step1.description">
+                        Upload your lecture recording or paste a YouTube link. We extract audio automatically.
+                    </p>
+                </div>
+                <div class="step-arrow">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title" data-i18n="howItWorks.step2.title">AI Transcribes</h3>
+                    <p class="step-text" data-i18n="howItWorks.step2.description">
+                        Our AI processes the audio and creates accurate text transcription in minutes.
+                    </p>
+                </div>
+                <div class="step-arrow">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title" data-i18n="howItWorks.step3.title">Get Notes</h3>
+                    <p class="step-text" data-i18n="howItWorks.step3.description">
+                        Review, edit, and export your notes. Search through all your transcriptions easily.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="section" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-i18n="pricing.title">Simple, Transparent <span
+                        class="text-gradient">Pricing</span></h2>
+                <p class="section-subtitle" data-i18n="pricing.subtitle">
+                    Start free, upgrade when you need more. No hidden fees.
+                </p>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="pricing-card card">
+                    <div class="card-body">
+                        <h3 class="pricing-tier" data-i18n="pricing.free.name">Free</h3>
+                        <div class="pricing-price">
+                            <span class="price-amount" data-i18n="pricing.free.price">$0</span>
+                            <span class="price-period" data-i18n="pricing.free.period">/month</span>
+                        </div>
+                        <p class="pricing-description" data-i18n="pricing.free.description">Perfect for trying out
+                            VidLecta</p>
+                        <ul class="pricing-features" id="free-features">
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                60 minutes per month
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                English & Russian
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                Basic summaries
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                7-day history
+                            </li>
+                        </ul>
+                        <a href="/register.html" class="btn btn-secondary w-full" data-i18n="pricing.free.cta">Get
+                            Started</a>
+                    </div>
+                </div>
+
+                <div class="pricing-card card pricing-featured">
+                    <div class="pricing-badge" data-i18n="pricing.mostPopular">Most Popular</div>
+                    <div class="card-body">
+                        <h3 class="pricing-tier" data-i18n="pricing.student.name">Student</h3>
+                        <div class="pricing-price">
+                            <span class="price-amount" data-i18n="pricing.student.price">$5</span>
+                            <span class="price-period" data-i18n="pricing.student.period">/month</span>
+                        </div>
+                        <p class="pricing-description" data-i18n="pricing.student.description">For active learners and
+                            students</p>
+                        <ul class="pricing-features" id="student-features">
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                300 minutes per month
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                All languages
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                Advanced AI summaries
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                Unlimited history
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                Export to PDF/DOCX
+                            </li>
+                        </ul>
+                        <a href="/register.html?plan=student" class="btn btn-primary w-full"
+                            data-i18n="pricing.student.cta">Start Free Trial</a>
+                    </div>
+                </div>
+
+                <div class="pricing-card card">
+                    <div class="card-body">
+                        <h3 class="pricing-tier" data-i18n="pricing.pro.name">Pro</h3>
+                        <div class="pricing-price">
+                            <span class="price-amount" data-i18n="pricing.pro.price">$15</span>
+                            <span class="price-period" data-i18n="pricing.pro.period">/month</span>
+                        </div>
+                        <p class="pricing-description" data-i18n="pricing.pro.description">For power users and
+                            researchers</p>
+                        <ul class="pricing-features" id="pro-features">
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                Unlimited minutes
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                Priority processing
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                API access
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                Team sharing
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                Custom integrations
+                            </li>
+                        </ul>
+                        <a href="/register.html?plan=pro" class="btn btn-secondary w-full"
+                            data-i18n="pricing.pro.cta">Contact Sales</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section section-alt" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-i18n="testimonials.title">Loved by <span
+                        class="text-gradient">Students</span></h2>
+                <p class="section-subtitle" data-i18n="testimonials.subtitle">
+                    Join thousands of students who've transformed their study habits.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-3" id="testimonials-grid">
+                <div class="testimonial card">
+                    <div class="card-body">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text" data-i18n="testimonials.t1.text">
+                            "VidLecta saved my semester! I can now review 2-hour lectures in 10 minutes by reading the
+                            summaries."
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="avatar avatar-placeholder">AK</div>
+                            <div>
+                                <div class="author-name" data-i18n="testimonials.t1.author">Anna K.</div>
+                                <div class="author-title" data-i18n="testimonials.t1.role">Medical Student</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial card">
+                    <div class="card-body">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text" data-i18n="testimonials.t2.text">
+                            "Works great with Russian! I use it for lecture notes every day."
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="avatar avatar-placeholder">ДМ</div>
+                            <div>
+                                <div class="author-name" data-i18n="testimonials.t2.author">Dmitry M.</div>
+                                <div class="author-title" data-i18n="testimonials.t2.role">IT Student</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial card">
+                    <div class="card-body">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text" data-i18n="testimonials.t3.text">
+                            "The accuracy is incredible. Even technical terms from my CS lectures are transcribed
+                            correctly."
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="avatar avatar-placeholder">JL</div>
+                            <div>
+                                <div class="author-name" data-i18n="testimonials.t3.author">James L.</div>
+                                <div class="author-title" data-i18n="testimonials.t3.role">CS Graduate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section" id="faq">
+        <div class="container container-sm">
+            <div class="section-header">
+                <h2 class="section-title" data-i18n="faq.title">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="faq-list" id="faq-list">
+                <details class="faq-item">
+                    <summary class="faq-question" data-i18n="faq.q1">What video formats are supported?</summary>
+                    <p class="faq-answer" data-i18n="faq.a1">
+                        We support most common video formats including MP4, MOV, AVI, MKV, and WebM.
+                        Audio files like MP3, WAV, and M4A are also supported. Maximum file size is 1GB.
+                    </p>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question" data-i18n="faq.q2">How accurate is the transcription?</summary>
+                    <p class="faq-answer" data-i18n="faq.a2">
+                        Our AI achieves 95%+ accuracy for clear audio in English and Russian.
+                        The quality depends on audio clarity and background noise.
+                        You can always edit the transcription after processing.
+                    </p>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question" data-i18n="faq.q3">How long does processing take?</summary>
+                    <p class="faq-answer" data-i18n="faq.a3">
+                        Processing time depends on video length. Typically, a 60-minute video
+                        takes 5-10 minutes to transcribe. You'll receive an email notification when it's ready.
+                    </p>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question" data-i18n="faq.q4">Is my data secure?</summary>
+                    <p class="faq-answer" data-i18n="faq.a4">
+                        Yes! All uploads are encrypted in transit and at rest.
+                        We don't share your data with third parties.
+                        You can delete your data at any time from your account settings.
+                    </p>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question" data-i18n="faq.q5">Can I cancel my subscription anytime?</summary>
+                    <p class="faq-answer" data-i18n="faq.a5">
+                        Absolutely! You can cancel your subscription at any time from your account settings.
+                        You'll continue to have access until the end of your billing period.
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta-section" id="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title" data-i18n="cta.title">Ready to Transform Your Study Habits?</h2>
+                <p class="cta-subtitle" data-i18n="cta.subtitle">
+                    Join thousands of students saving hours every week. Start with 60 free minutes.
+                </p>
+                <a href="/register.html" class="btn btn-primary btn-lg">
+                    <span data-i18n="cta.button">Get Started Free</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="navbar-brand">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <rect width="32" height="32" rx="8" fill="url(#gradient2)" />
+                            <path d="M12 10L22 16L12 22V10Z" fill="white" />
+                            <defs>
+                                <linearGradient id="gradient2" x1="0" y1="0" x2="32" y2="32">
+                                    <stop stop-color="#7c3aed" />
+                                    <stop offset="1" stop-color="#3b82f6" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <span>VidLecta</span>
+                    </a>
+                    <p class="footer-tagline" data-i18n="footer.tagline">Transform videos into smart notes.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4 class="footer-heading" data-i18n="footer.product">Product</h4>
+                    <ul>
+                        <li><a href="#features" data-i18n="nav.features">Features</a></li>
+                        <li><a href="#pricing" data-i18n="nav.pricing">Pricing</a></li>
+                        <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+                        <li><a href="/api" data-i18n="footer.api">API</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4 class="footer-heading" data-i18n="footer.company">Company</h4>
+                    <ul>
+                        <li><a href="/about" data-i18n="footer.about">About</a></li>
+                        <li><a href="/blog" data-i18n="footer.blog">Blog</a></li>
+                        <li><a href="/careers" data-i18n="footer.careers">Careers</a></li>
+                        <li><a href="/contact" data-i18n="footer.contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4 class="footer-heading" data-i18n="footer.legal">Legal</h4>
+                    <ul>
+                        <li><a href="/privacy" data-i18n="footer.privacy">Privacy Policy</a></li>
+                        <li><a href="/terms" data-i18n="footer.terms">Terms of Service</a></li>
+                        <li><a href="/cookies" data-i18n="footer.cookies">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p data-i18n="footer.copyright">&copy; 2026 VidLecta. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Twitter">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="GitHub">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="/js/i18n.js"></script>
+    <script src="/js/main.js"></script>
+
+    <style>
+        /* Language Switcher */
+        .lang-switcher {
+            display: flex;
+            gap: 4px;
+            margin-right: var(--spacing-4);
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: 1px solid transparent;
+            border-radius: var(--radius-md);
+            padding: 4px 8px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all var(--transition-base);
+        }
+
+        .lang-btn:hover {
+            background: var(--color-bg-tertiary);
+        }
+
+        .lang-btn.active {
+            background: var(--color-bg-tertiary);
+            border-color: var(--color-accent-primary);
+        }
+    </style>
+</body>
+
+</html>

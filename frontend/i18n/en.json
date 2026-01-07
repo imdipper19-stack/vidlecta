@@ -1,0 +1,313 @@
+{
+    "meta": {
+        "title": "VidLecta — Transform Videos into Smart Notes | AI Transcription for Students",
+        "description": "Convert lecture videos to text transcriptions and smart summaries instantly. AI-powered platform for students. Supports English and Russian. Start free today!",
+        "keywords": "video to text, transcription, student notes, lecture transcription, AI summary"
+    },
+    "nav": {
+        "features": "Features",
+        "pricing": "Pricing",
+        "about": "About",
+        "faq": "FAQ",
+        "login": "Login",
+        "getStarted": "Get Started Free",
+        "dashboard": "Dashboard",
+        "myVideos": "My Videos",
+        "transcriptions": "Transcriptions",
+        "settings": "Settings",
+        "logout": "Logout",
+        "upgradePlan": "Upgrade Plan"
+    },
+    "hero": {
+        "title": "Transform Your <span>Videos</span> into Smart Notes",
+        "subtitle": "AI-powered transcription and intelligent summaries. The ultimate tool for students to effortlessly capture and organize video content in English and Russian.",
+        "cta": "Get Started Free",
+        "watchDemo": "Watch Demo",
+        "noCreditCard": "No credit card required",
+        "freeMinutes": "60 free minutes per month"
+    },
+    "features": {
+        "title": "Powerful Features for <span>Students</span>",
+        "subtitle": "Everything you need to turn hours of lecture videos into organized, searchable notes.",
+        "upload": {
+            "title": "Easy Upload",
+            "description": "Drag & drop videos or paste YouTube links. Supports MP4, MOV, AVI, WebM, and audio files."
+        },
+        "transcription": {
+            "title": "AI Transcription",
+            "description": "Accurate speech-to-text powered by OpenAI Whisper. Works great with accents and technical terms."
+        },
+        "multilang": {
+            "title": "Multi-language",
+            "description": "Transcribe in English or Russian. Auto-detect language or choose manually for best results."
+        },
+        "summary": {
+            "title": "Smart Summaries",
+            "description": "Get AI-generated key points and summaries. Perfect for quick review before exams."
+        }
+    },
+    "howItWorks": {
+        "title": "How It Works",
+        "subtitle": "Three simple steps to transform any video into organized notes.",
+        "step1": {
+            "title": "Upload Video",
+            "description": "Upload your lecture recording or paste a YouTube link. We extract audio automatically."
+        },
+        "step2": {
+            "title": "AI Transcribes",
+            "description": "Our AI processes the audio and creates accurate text transcription in minutes."
+        },
+        "step3": {
+            "title": "Get Notes",
+            "description": "Review, edit, and export your notes. Search through all your transcriptions easily."
+        }
+    },
+    "pricing": {
+        "title": "Simple, Transparent <span>Pricing</span>",
+        "subtitle": "Start free, upgrade when you need more. No hidden fees.",
+        "mostPopular": "Most Popular",
+        "free": {
+            "name": "Free",
+            "price": "$0",
+            "period": "/month",
+            "description": "Perfect for trying out VidLecta",
+            "features": [
+                "60 minutes per month",
+                "English & Russian",
+                "Basic summaries",
+                "7-day history"
+            ],
+            "cta": "Get Started"
+        },
+        "student": {
+            "name": "Student",
+            "price": "$5",
+            "period": "/month",
+            "description": "For active learners and students",
+            "features": [
+                "300 minutes per month",
+                "All languages",
+                "Advanced AI summaries",
+                "Unlimited history",
+                "Export to PDF/DOCX"
+            ],
+            "cta": "Start Free Trial"
+        },
+        "pro": {
+            "name": "Pro",
+            "price": "$15",
+            "period": "/month",
+            "description": "For power users and researchers",
+            "features": [
+                "Unlimited minutes",
+                "Priority processing",
+                "API access",
+                "Team sharing",
+                "Custom integrations"
+            ],
+            "cta": "Contact Sales"
+        }
+    },
+    "testimonials": {
+        "title": "Loved by <span>Students</span>",
+        "subtitle": "Join thousands of students who've transformed their study habits.",
+        "items": [
+            {
+                "text": "VidLecta saved my semester! I can now review 2-hour lectures in 10 minutes by reading the summaries.",
+                "name": "Anna K.",
+                "role": "Medical Student"
+            },
+            {
+                "text": "Works great with Russian language! I use it for my lecture notes every day.",
+                "name": "Dmitry M.",
+                "role": "IT Student"
+            },
+            {
+                "text": "The accuracy is incredible. Even technical terms from my CS lectures are transcribed correctly.",
+                "name": "James L.",
+                "role": "CS Graduate"
+            }
+        ]
+    },
+    "faq": {
+        "title": "Frequently Asked Questions",
+        "items": [
+            {
+                "q": "What video formats are supported?",
+                "a": "We support most common video formats including MP4, MOV, AVI, MKV, and WebM. Audio files like MP3, WAV, and M4A are also supported. Maximum file size is 1GB."
+            },
+            {
+                "q": "How accurate is the transcription?",
+                "a": "Our AI achieves 95%+ accuracy for clear audio in English and Russian. The quality depends on audio clarity and background noise. You can always edit the transcription after processing."
+            },
+            {
+                "q": "How long does processing take?",
+                "a": "Processing time depends on video length. Typically, a 60-minute video takes 5-10 minutes to transcribe. You'll receive an email notification when it's ready."
+            },
+            {
+                "q": "Is my data secure?",
+                "a": "Yes! All uploads are encrypted in transit and at rest. We don't share your data with third parties. You can delete your data at any time from your account settings."
+            },
+            {
+                "q": "Can I cancel my subscription anytime?",
+                "a": "Absolutely! You can cancel your subscription at any time from your account settings. You'll continue to have access until the end of your billing period."
+            }
+        ]
+    },
+    "cta": {
+        "title": "Ready to Transform Your Study Habits?",
+        "subtitle": "Join thousands of students saving hours every week. Start with 60 free minutes.",
+        "button": "Get Started Free"
+    },
+    "footer": {
+        "tagline": "Transform videos into smart notes.",
+        "product": "Product",
+        "company": "Company",
+        "legal": "Legal",
+        "about": "About",
+        "blog": "Blog",
+        "careers": "Careers",
+        "contact": "Contact",
+        "privacy": "Privacy Policy",
+        "terms": "Terms of Service",
+        "cookies": "Cookie Policy",
+        "api": "API",
+        "copyright": "© 2026 VidLecta. All rights reserved."
+    },
+    "auth": {
+        "createAccount": "Create Account",
+        "startFreeTrial": "Start your free trial today",
+        "signIn": "Sign In",
+        "welcomeBack": "Welcome Back",
+        "continueToVidLecta": "Sign in to continue to VidLecta",
+        "fullName": "Full Name",
+        "email": "Email Address",
+        "username": "Username",
+        "password": "Password",
+        "confirmPassword": "Confirm Password",
+        "rememberMe": "Remember me",
+        "forgotPassword": "Forgot password?",
+        "orContinueWith": "or continue with",
+        "alreadyHaveAccount": "Already have an account?",
+        "dontHaveAccount": "Don't have an account?",
+        "agreeToTerms": "I agree to the",
+        "termsOfService": "Terms of Service",
+        "and": "and",
+        "privacyPolicy": "Privacy Policy",
+        "uploadPhoto": "Upload Photo",
+        "createAccountBtn": "Create Account",
+        "signInBtn": "Sign In",
+        "usernameHint": "3-30 characters, letters, numbers, underscores only"
+    },
+    "password": {
+        "requirements": "Password Requirements",
+        "minLength": "At least 8 characters",
+        "uppercase": "One uppercase letter (A-Z)",
+        "lowercase": "One lowercase letter (a-z)",
+        "number": "One number (0-9)",
+        "special": "One special character (!@#$%^&*)",
+        "weak": "Weak password",
+        "fair": "Fair password",
+        "good": "Good password",
+        "strong": "Strong password",
+        "excellent": "Excellent password!"
+    },
+    "dashboard": {
+        "welcomeBack": "Welcome back",
+        "overview": "Here's an overview of your transcription activity.",
+        "recentTranscriptions": "Recent Transcriptions",
+        "viewAll": "View All",
+        "uploadNewVideo": "Upload New Video",
+        "dragAndDrop": "Drag and drop your files here",
+        "orClickBrowse": "or click to browse",
+        "supportedFormats": "Supported: MP4, MOV, AVI, MP3, WAV • Max 1GB",
+        "transcriptionLanguage": "Transcription Language",
+        "newTranscription": "New Transcription",
+        "viewHistory": "View History",
+        "noTranscriptions": "No transcriptions yet",
+        "uploadToStart": "Upload a video to get started",
+        "videosProcessed": "Videos Processed",
+        "totalMinutes": "Total Minutes",
+        "storageUsed": "Storage Used",
+        "search": "Search videos, transcriptions..."
+    },
+    "settings": {
+        "title": "Settings",
+        "profile": "Profile",
+        "account": "Account",
+        "security": "Security",
+        "preferences": "Preferences",
+        "profileInfo": "Profile Information",
+        "updatePhotoDetails": "Update your photo and personal details.",
+        "displayName": "Display Name",
+        "bio": "Bio",
+        "bioHint": "Brief description for your profile. Max 200 characters.",
+        "saveChanges": "Save Changes",
+        "cancel": "Cancel",
+        "changePhoto": "Change Photo",
+        "removePhoto": "Remove",
+        "emailAddress": "Email Address",
+        "currentEmail": "Current Email",
+        "newEmail": "New Email",
+        "confirmPasswordToChange": "Confirm Password",
+        "updateEmail": "Update Email",
+        "verified": "Verified",
+        "unverified": "Unverified",
+        "dangerZone": "Danger Zone",
+        "dangerDescription": "Irreversible and destructive actions.",
+        "deleteAccount": "Delete Account",
+        "changePassword": "Change Password",
+        "ensureSecure": "Ensure your account stays secure.",
+        "currentPassword": "Current Password",
+        "newPassword": "New Password",
+        "confirmNewPassword": "Confirm New Password",
+        "updatePassword": "Update Password",
+        "twoFactorAuth": "Two-Factor Authentication",
+        "twoFactorDescription": "Add an extra layer of security to your account.",
+        "authenticatorApp": "Authenticator App",
+        "authenticatorDescription": "Use an authentication app to generate one-time codes.",
+        "language": "Language",
+        "selectLanguage": "Select your preferred language.",
+        "appearance": "Appearance",
+        "customizeLook": "Customize how VidLecta looks.",
+        "dark": "Dark",
+        "light": "Light",
+        "notifications": "Notifications",
+        "manageNotifications": "Manage your notification preferences.",
+        "emailNotifications": "Email Notifications",
+        "emailNotificationsDesc": "Receive emails when your transcriptions are ready.",
+        "productUpdates": "Product Updates",
+        "productUpdatesDesc": "Get notified about new features and updates.",
+        "savePreferences": "Save Preferences"
+    },
+    "benefits": {
+        "unlimitedTranscriptions": "Unlimited Transcriptions",
+        "unlimitedDesc": "Convert any video to text with no limits on free tier (60 min/month)",
+        "cloudStorage": "Cloud Storage",
+        "cloudDesc": "Securely save and access your notes from anywhere",
+        "multiLanguage": "Multi-language Support",
+        "multiLanguageDesc": "Transcribe in English, Russian and more languages",
+        "aiPowered": "AI-Powered Transcription",
+        "aiPoweredDesc": "Accurate speech-to-text powered by OpenAI Whisper",
+        "smartSummaries": "Smart Summaries",
+        "smartSummariesDesc": "Get AI-generated key points from your lectures",
+        "securePrivate": "Secure & Private",
+        "securePrivateDesc": "Your data is encrypted and never shared"
+    },
+    "common": {
+        "loading": "Loading...",
+        "error": "Error",
+        "success": "Success",
+        "english": "English",
+        "russian": "Русский",
+        "save": "Save",
+        "delete": "Delete",
+        "edit": "Edit",
+        "close": "Close",
+        "confirm": "Confirm",
+        "back": "Back",
+        "next": "Next",
+        "submit": "Submit",
+        "home": "Home"
+    }
+}

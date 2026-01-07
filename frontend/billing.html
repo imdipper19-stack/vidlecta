@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Billing & Plans — VidLecta</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/design-system.css">
+    <link rel="stylesheet" href="/css/pages/dashboard.css">
+    <style>
+        /* Simple Pricing Grid for Billing Page */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .pricing-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary-color);
+        }
+
+        .pricing-card.featured {
+            background: linear-gradient(145deg, rgba(124, 58, 237, 0.1), rgba(59, 130, 246, 0.05));
+            border: 1px solid var(--primary-color);
+            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.15);
+        }
+
+        .plan-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .plan-price span {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .plan-features {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+            flex-grow: 1;
+        }
+
+        .plan-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .plan-features li svg {
+            color: var(--success-color);
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Mobile Menu Toggle -->
+    <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+    </button>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <a href="/" class="sidebar-brand">
+            <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+                <rect width="32" height="32" rx="8" fill="url(#gradient)" />
+                <path d="M12 10L22 16L12 22V10Z" fill="white" />
+                <defs>
+                    <linearGradient id="gradient" x1="0" y1="0" x2="32" y2="32">
+                        <stop stop-color="#7c3aed" />
+                        <stop offset="1" stop-color="#3b82f6" />
+                    </linearGradient>
+                </defs>
+            </svg>
+            <span>VidLecta</span>
+        </a>
+
+        <nav class="sidebar-nav">
+            <a href="/dashboard.html" class="sidebar-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="14" width="7" height="7"></rect>
+                    <rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+                <span data-i18n="nav.dashboard">Dashboard</span>
+            </a>
+            <a href="/videos.html" class="sidebar-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                </svg>
+                <span data-i18n="nav.videos">My Videos</span>
+            </a>
+            <a href="/transcriptions.html" class="sidebar-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                </svg>
+                <span data-i18n="nav.transcriptions">Transcriptions</span>
+            </a>
+            <a href="/settings.html" class="sidebar-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path
+                        d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                    </path>
+                </svg>
+                <span data-i18n="nav.settings">Settings</span>
+            </a>
+
+            <div class="sidebar-divider"></div>
+
+            <a href="/billing.html" class="sidebar-link upgrade-link active">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon
+                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                    </polygon>
+                </svg>
+                <span data-i18n="nav.upgrade">Upgrade Plan</span>
+                <span class="badge badge-pro">PRO</span>
+            </a>
+        </nav>
+
+        <a href="#" class="sidebar-link" id="logout-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                <polyline points="16 17 21 12 16 7"></polyline>
+                <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+            <span data-i18n="nav.logout">Log Out</span>
+        </a>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="top-bar">
+            <div class="search-bar"></div>
+            <div class="user-menu">
+                <div class="user-profile">
+                    <img src="/api/users/me/avatar"
+                        onerror="this.src='https://ui-avatars.com/api/?name=User&background=random'" alt="User"
+                        class="avatar-sm">
+                    <span class="user-name">User</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="dashboard-container">
+            <div class="section-header">
+                <div>
+                    <h1 data-i18n="billing.title">Upgrade your Plan</h1>
+                    <p class="text-secondary" data-i18n="billing.subtitle">Choose the perfect plan for your needs</p>
+                </div>
+            </div>
+
+            <!-- Pricing Grid -->
+            <div class="pricing-grid">
+                <!-- Free Plan -->
+                <div class="pricing-card">
+                    <div class="plan-name" data-i18n="billing.free.name">Free</div>
+                    <div class="plan-price">$0 <span data-i18n="billing.free.period">/ mo</span></div>
+                    <ul class="plan-features">
+                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg> <span data-i18n="billing.features.minutes_limit">60 minutes / month</span></li>
+                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg> <span data-i18n="billing.features.standard_quality">Standard Quality</span></li>
+                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg> <span data-i18n="billing.features.languages_2">2 Languages</span></li>
+                    </ul>
+                    <button class="btn btn-secondary" disabled data-i18n="billing.free.btn">Current Plan</button>
+                </div>
+
+                <!-- Pro Plan -->
+                <div class="pricing-card featured">
+                    <div class="plan-name" data-i18n="billing.pro.name">Pro</div>
+                    <div class="plan-price">$15 <span data-i18n="billing.pro.period">/ mo</span></div>
+                    <ul class="plan-features">
+                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg> <span data-i18n="billing.features.unlimited">Unlimited Minutes</span></li>
+                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg> <span data-i18n="billing.features.highest_accuracy">Highest Accuracy</span></li>
+                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg> <span data-i18n="billing.features.all_languages">All Languages</span></li>
+                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg> <span data-i18n="billing.features.priority_support">Priority Support</span></li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="alert('Payment integration coming soon!')"
+                        data-i18n="billing.pro.btn">Upgrade Now</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="/js/i18n.js"></script>
+    <script src="/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Load user profile
+            try {
+                const userRes = await api.get('/api/users/me');
+                if (userRes.ok) {
+                    const user = await userRes.json();
+                    document.querySelector('.user-name').textContent = user.username;
+                    document.querySelector('.avatar-sm').src = `/api/users/me/avatar?t=${Date.now()}`;
+                }
+            } catch (e) {
+                console.error('Failed to load user', e);
+            }
+        });
+    </script>
+</body>
+
+</html>
