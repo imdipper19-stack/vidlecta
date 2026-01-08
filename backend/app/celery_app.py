@@ -36,14 +36,7 @@ celery_app.conf.update(
     # Result backend settings
     result_expires=86400,  # Results expire in 24 hours
     
-    # Task routing
-    task_routes={
-        "app.tasks.transcribe_video": {"queue": "transcription"},
-        "app.tasks.generate_summary": {"queue": "summary"},
-        "app.tasks.cleanup_temp_files": {"queue": "cleanup"},
-    },
-    
-    # Default queue
+    # Default queue - all tasks use this
     task_default_queue="default",
 )
 
