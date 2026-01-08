@@ -1,7 +1,7 @@
 """
 VideoNotes - Videos Router
 """
-from fastapi import APIRouter, Depends, HTTPException, status, UploadFile, File, BackgroundTasks
+from fastapi import APIRouter, Depends, HTTPException, status, UploadFile, File, BackgroundTasks, Form
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, func
 from pydantic import BaseModel
@@ -72,7 +72,7 @@ def get_minutes_limit(tier: str) -> int:
 @router.post("/upload", response_model=VideoUploadResponse)
 async def upload_video(
     file: UploadFile = File(...),
-    language: str = "en",
+    language: str = Form("en"),
     current_user: User = Depends(get_current_user),
     db: AsyncSession = Depends(get_db)
 ):
