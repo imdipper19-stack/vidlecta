@@ -135,9 +135,17 @@ async def upload_video(
     db.add(video)
     await db.commit()
     
-    # TODO: Upload to MinIO storage
-    # TODO: Trigger Celery task for processing
-    # task = process_video.delay(str(video_id), language)
+    # Save file to temporary location for processing
+    import tempfile
+    import os
+    temp_dir = tempfile.mkdtemp()
+    temp_file_path = os.path.join(temp_dir, file.filename)
+    with open(temp_file_path, "wb") as f:
+        f.write(contents)
+    
+    # Trigger Celery task for transcription
+    from app.tasks import transcribe_video
+    transcribe_video.delay(str(video_id), temp_file_path, language)
     
     return VideoUploadResponse(
         id=str(video_id),
