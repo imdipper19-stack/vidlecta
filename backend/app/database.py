@@ -2,8 +2,8 @@
 VideoNotes - Database Models and Connection
 """
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
-from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
-from sqlalchemy import String, Boolean, Integer, Float, Text, ForeignKey, DateTime
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship, sessionmaker
+from sqlalchemy import String, Boolean, Integer, Float, Text, ForeignKey, DateTime, create_engine
 from datetime import datetime
 from typing import Optional, List
 import uuid
@@ -11,7 +11,7 @@ import uuid
 from app.config import settings
 
 
-# Create async engine
+# Create async engine for FastAPI
 engine = create_async_engine(
     settings.DATABASE_URL.replace("postgresql://", "postgresql+asyncpg://"),
     echo=False,
@@ -19,8 +19,19 @@ engine = create_async_engine(
     max_overflow=10
 )
 
-# Session factory
+# Async session factory for FastAPI
 async_session = async_sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
+
+# Create sync engine for Celery workers
+sync_engine = create_engine(
+    settings.DATABASE_URL,
+    echo=False,
+    pool_size=5,
+    max_overflow=5
+)
+
+# Sync session factory for Celery
+SessionLocal = sessionmaker(bind=sync_engine, autocommit=False, autoflush=False)
 
 
 class Base(DeclarativeBase):
