@@ -207,6 +207,9 @@ class Dashboard {
             option.addEventListener('click', () => {
                 languageOptions.forEach(o => o.classList.remove('active'));
                 option.classList.add('active');
+                // Ensure the radio input is checked
+                const radio = option.querySelector('input[type="radio"]');
+                if (radio) radio.checked = true;
             });
         });
 
