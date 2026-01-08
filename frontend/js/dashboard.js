@@ -115,7 +115,9 @@ class Dashboard {
         }
 
         container.innerHTML = transcriptions.map(t => {
-            const statusLabel = i18n.t(`common.status.${t.status}`) || t.status;
+            // Transcriptions don't have status field - they're always completed when listed
+            const status = t.status || 'completed';
+            const statusLabel = i18n.t(`common.status.${status}`) || status;
 
             return `
             <div class="transcription-item" data-id="${t.id}">
@@ -130,7 +132,7 @@ class Dashboard {
                         ${t.language.toUpperCase()} • ${this.formatDate(t.created_at)}
                     </div>
                 </div>
-                <span class="badge badge-${t.status === 'completed' ? 'success' : 'warning'}">
+                <span class="badge badge-${status === 'completed' ? 'success' : 'warning'}">
                     ${statusLabel}
                 </span>
             </div>
@@ -158,11 +160,33 @@ class Dashboard {
     updateStats(stats) {
         const videosStat = document.getElementById('stat-videos');
         const minutesStat = document.getElementById('stat-minutes');
-        const storageStat = document.getElementById('stat-storage');
+        const remainingStat = document.getElementById('stat-remaining');
+        const limitStat = document.getElementById('stat-limit');
+        const progressFill = document.getElementById('minutes-progress-fill');
 
         if (videosStat) videosStat.textContent = stats.total_videos || 0;
-        if (minutesStat) minutesStat.textContent = stats.total_minutes || 0;
-        if (storageStat) storageStat.textContent = `${(stats.storage_used_mb || 0).toFixed(1)} MB`;
+        if (minutesStat) minutesStat.textContent = Math.round(stats.total_minutes_processed || 0);
+
+        // Calculate remaining minutes
+        const used = stats.monthly_minutes_used || 0;
+        const limit = stats.monthly_minutes_limit || 60;
+        const remaining = Math.max(0, limit - used);
+
+        if (remainingStat) remainingStat.textContent = remaining;
+        if (limitStat) limitStat.textContent = limit;
+
+        // Update progress bar (remaining percentage)
+        if (progressFill) {
+            const percentage = limit > 0 ? (remaining / limit) * 100 : 0;
+            progressFill.style.width = `${percentage}%`;
+
+            // Change color based on remaining
+            if (percentage < 20) {
+                progressFill.style.background = 'var(--color-error)';
+            } else if (percentage < 50) {
+                progressFill.style.background = 'var(--color-warning)';
+            }
+        }
     }
 
     setupEventListeners() {

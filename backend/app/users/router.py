@@ -2,14 +2,15 @@
 VideoNotes - Users Router
 """
 from fastapi import APIRouter, Depends, HTTPException, status, UploadFile, File
+from fastapi.responses import RedirectResponse
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy import select
+from sqlalchemy import select, func
 from pydantic import BaseModel, EmailStr, field_validator
 from typing import Optional
 from datetime import datetime
 import uuid
 
-from app.database import get_db, User
+from app.database import get_db, User, Video, Transcription
 from app.auth.router import get_current_user
 from app.auth.password import PasswordValidator, hash_password, verify_password
 from app.auth.schemas import MessageResponse, ChangePasswordRequest
@@ -103,6 +104,62 @@ async def get_profile(current_user: User = Depends(get_current_user)):
         theme=current_user.theme,
         email_notifications=current_user.email_notifications,
         created_at=current_user.created_at
+    )
+
+
+def get_minutes_limit(tier: str) -> int:
+    """Get minutes limit based on subscription tier"""
+    limits = {
+        "free": 60,
+        "student": 300,
+        "pro": 1000
+    }
+    return limits.get(tier, 60)
+
+
+@router.get("/me/stats", response_model=UserStatsResponse)
+async def get_stats(
+    current_user: User = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db)
+):
+    """Get user statistics"""
+    # Count videos
+    video_count = await db.execute(
+        select(func.count(Video.id)).where(Video.user_id == current_user.id)
+    )
+    total_videos = video_count.scalar() or 0
+    
+    # Count transcriptions
+    trans_count = await db.execute(
+        select(func.count(Transcription.id)).where(Transcription.user_id == current_user.id)
+    )
+    total_transcriptions = trans_count.scalar() or 0
+    
+    # Sum total minutes processed
+    duration_sum = await db.execute(
+        select(func.sum(Video.duration_seconds)).where(Video.user_id == current_user.id)
+    )
+    total_seconds = duration_sum.scalar() or 0
+    total_minutes = round(total_seconds / 60, 2)
+    
+    return UserStatsResponse(
+        total_videos=total_videos,
+        total_transcriptions=total_transcriptions,
+        total_minutes_processed=total_minutes,
+        monthly_minutes_used=current_user.monthly_minutes_used,
+        monthly_minutes_limit=get_minutes_limit(current_user.subscription_tier),
+        subscription_tier=current_user.subscription_tier
+    )
+
+
+@router.get("/me/avatar")
+async def get_avatar(current_user: User = Depends(get_current_user)):
+    """Get user avatar URL - redirects to avatar or returns 404"""
+    if current_user.avatar_url:
+        return RedirectResponse(url=current_user.avatar_url)
+    raise HTTPException(
+        status_code=status.HTTP_404_NOT_FOUND,
+        detail="No avatar set"
     )
 
 

@@ -98,7 +98,8 @@
         "stats": {
             "videos": "Videos Processed",
             "minutes": "Total Minutes",
-            "storage": "Storage Used"
+            "storage": "Storage Used",
+            "remaining": "Minutes Remaining"
         },
         "recent": "Recent Transcriptions",
         "view_all": "View All",
@@ -374,5 +375,34 @@
         "terms": "Terms of Service",
         "cookies": "Cookie Policy",
         "copyright": "© 2026 VidLecta. All rights reserved."
+    },
+    "search": {
+        "transcriptions": "Search transcriptions..."
+    },
+    "pricing": {
+        "title": "Pricing Plans",
+        "subtitle": "Choose the right plan for you",
+        "mostPopular": "Most Popular",
+        "free": {
+            "name": "Free",
+            "price": "$0",
+            "period": "forever",
+            "description": "Perfect to get started",
+            "cta": "Get Started Free"
+        },
+        "student": {
+            "name": "Student",
+            "price": "$4.99",
+            "period": "/month",
+            "description": "For active students",
+            "cta": "Choose Plan"
+        },
+        "pro": {
+            "name": "Professional",
+            "price": "$9.99",
+            "period": "/month",
+            "description": "For professionals",
+            "cta": "Choose Plan"
+        }
     }
 }

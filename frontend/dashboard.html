@@ -209,13 +209,19 @@
             <div class="stat-card">
                 <div class="stat-icon" style="background: rgba(59, 130, 246, 0.2); color: var(--color-info);">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                        <polyline points="7 10 12 15 17 10"></polyline>
-                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 6v6l4 2"></path>
                     </svg>
                 </div>
-                <div class="stat-value" id="stat-storage">0 MB</div>
-                <div class="stat-label" data-i18n="dashboard.stats.storage">Storage Used</div>
+                <div class="stat-value"><span id="stat-remaining">60</span> / <span id="stat-limit">60</span></div>
+                <div class="stat-label" data-i18n="dashboard.stats.remaining">Minutes Remaining</div>
+                <div class="minutes-progress" style="margin-top: 8px;">
+                    <div class="progress-bar" style="height: 4px; background: var(--color-border); border-radius: 2px;">
+                        <div class="progress-fill" id="minutes-progress-fill"
+                            style="height: 100%; width: 100%; background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light)); border-radius: 2px; transition: width 0.3s;">
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
