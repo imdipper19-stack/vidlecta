@@ -45,6 +45,20 @@ class VideoUploadResponse(BaseModel):
     status: str
 
 
+class VideoFromUrlRequest(BaseModel):
+    """Request to upload video from URL"""
+    url: str
+    language: str = "en"
+
+
+class VideoFromUrlResponse(BaseModel):
+    """Response for URL upload"""
+    id: str
+    message: str
+    status: str
+    source_url: str
+
+
 def get_minutes_limit(tier: str) -> int:
     """Get monthly minutes limit for subscription tier"""
     limits = {
@@ -129,6 +143,78 @@ async def upload_video(
         id=str(video_id),
         message="Video uploaded successfully. Processing will begin shortly.",
         status="pending"
+    )
+
+
+@router.post("/from-url", response_model=VideoFromUrlResponse)
+async def upload_from_url(
+    request: VideoFromUrlRequest,
+    current_user: User = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db)
+):
+    """
+    Upload video from URL (YouTube, VK, RuTube, TikTok, etc.)
+    
+    Supported platforms: YouTube, VK Video, RuTube, TikTok, Vimeo, and 1000+ more.
+    """
+    import re
+    from app.tasks import download_from_url
+    
+    # Check subscription limits
+    minutes_limit = get_minutes_limit(current_user.subscription_tier)
+    if current_user.monthly_minutes_used >= minutes_limit:
+        raise HTTPException(
+            status_code=status.HTTP_402_PAYMENT_REQUIRED,
+            detail=f"Monthly limit reached ({minutes_limit} minutes). Please upgrade your plan."
+        )
+    
+    # Validate URL format
+    url_pattern = re.compile(
+        r'^https?://'  # http:// or https://
+        r'(?:(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+[A-Z]{2,6}\.?|'  # domain
+        r'localhost|'  # localhost
+        r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})'  # or IP
+        r'(?::\d+)?'  # optional port
+        r'(?:/?|[/?]\S+)$', re.IGNORECASE
+    )
+    
+    if not url_pattern.match(request.url):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Invalid URL format"
+        )
+    
+    # Validate language
+    if request.language not in ["en", "ru", "auto"]:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Supported languages: en (English), ru (Russian), auto (detect)"
+        )
+    
+    # Create video record
+    video_id = uuid.uuid4()
+    
+    video = Video(
+        id=video_id,
+        user_id=current_user.id,
+        original_filename=f"from_url_{video_id}",  # Will be updated after download
+        storage_path=f"videos/{current_user.id}/{video_id}/",
+        file_size=0,  # Will be updated after download
+        status="queued",
+        source_url=request.url
+    )
+    
+    db.add(video)
+    await db.commit()
+    
+    # Trigger Celery task for download and transcription
+    download_from_url.delay(str(video_id), request.url, request.language)
+    
+    return VideoFromUrlResponse(
+        id=str(video_id),
+        message="Video queued for download. Transcription will begin after download completes.",
+        status="queued",
+        source_url=request.url
     )
 
 

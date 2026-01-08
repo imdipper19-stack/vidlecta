@@ -108,11 +108,19 @@
         },
         "upload": {
             "title": "Upload New Video",
+            "tab_file": "Upload File",
+            "tab_url": "From URL",
             "drag_drop": "Drag & Drop your files here",
             "browse": "or click to browse",
             "supported": "Supported: MP4, MOV, AVI, MP3, WAV • Max 1GB",
             "language": "Transcription Language",
-            "btn": "Upload & Transcribe"
+            "btn": "Upload & Transcribe",
+            "url_hint": "Paste a video URL from YouTube, VK, RuTube, TikTok, or other platforms",
+            "url_placeholder": "https://youtube.com/watch?v=...",
+            "url_submit": "Download & Transcribe",
+            "url_empty": "Please enter a video URL",
+            "url_invalid": "Invalid URL format",
+            "url_success": "Video queued for download! Transcription will begin after download completes."
         }
     },
     "videos": {

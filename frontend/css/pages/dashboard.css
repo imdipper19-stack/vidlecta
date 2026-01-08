@@ -226,6 +226,93 @@
     margin-bottom: var(--spacing-4);
 }
 
+/* Upload Tabs */
+.upload-tabs {
+    display: flex;
+    gap: var(--spacing-2);
+    margin-bottom: var(--spacing-4);
+}
+
+.upload-tab {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    padding: var(--spacing-3) var(--spacing-4);
+    background: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    transition: all var(--transition-base);
+}
+
+.upload-tab:hover {
+    border-color: var(--color-border-hover);
+    color: var(--color-text-primary);
+}
+
+.upload-tab.active {
+    background: rgba(124, 58, 237, 0.1);
+    border-color: var(--color-accent-primary);
+    color: var(--color-accent-primary);
+}
+
+.upload-tab-content {
+    display: none;
+}
+
+.upload-tab-content.active {
+    display: block;
+}
+
+/* URL Upload Form */
+.url-upload-form {
+    padding: var(--spacing-6);
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-lg);
+    border: 1px dashed var(--color-border);
+    text-align: center;
+}
+
+.platform-icons {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-4);
+    margin-bottom: var(--spacing-4);
+    font-size: 1.8rem;
+}
+
+.platform-icons span {
+    opacity: 0.8;
+    transition: transform var(--transition-base);
+}
+
+.platform-icons span:hover {
+    transform: scale(1.2);
+    opacity: 1;
+}
+
+.url-hint {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-4);
+}
+
+.url-input-group {
+    display: flex;
+    gap: var(--spacing-3);
+}
+
+.url-input-group .form-input {
+    flex: 1;
+}
+
+.url-input-group .btn {
+    white-space: nowrap;
+}
+
 .upload-formats {
     font-size: var(--font-size-xs);
     color: var(--color-text-muted);

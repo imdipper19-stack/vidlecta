@@ -222,6 +222,88 @@ class Dashboard {
                 });
             }
         });
+
+        // Upload tabs switching
+        const uploadTabs = document.querySelectorAll('.upload-tab');
+        const uploadFileContent = document.getElementById('upload-file-content');
+        const uploadUrlContent = document.getElementById('upload-url-content');
+
+        uploadTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                uploadTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                if (tab.dataset.uploadTab === 'file') {
+                    uploadFileContent?.classList.add('active');
+                    uploadUrlContent?.classList.remove('active');
+                } else {
+                    uploadFileContent?.classList.remove('active');
+                    uploadUrlContent?.classList.add('active');
+                }
+            });
+        });
+
+        // URL upload submission
+        const submitUrlBtn = document.getElementById('submit-url-btn');
+        const urlInput = document.getElementById('video-url-input');
+
+        if (submitUrlBtn && urlInput) {
+            submitUrlBtn.addEventListener('click', () => this.handleUrlUpload());
+            urlInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') this.handleUrlUpload();
+            });
+        }
+    }
+
+    async handleUrlUpload() {
+        const urlInput = document.getElementById('video-url-input');
+        const submitBtn = document.getElementById('submit-url-btn');
+        const url = urlInput?.value.trim();
+
+        if (!url) {
+            alert(i18n.t('dashboard.upload.url_empty') || 'Please enter a video URL');
+            return;
+        }
+
+        // Simple URL validation
+        if (!url.match(/^https?:\/\/.+/i)) {
+            alert(i18n.t('dashboard.upload.url_invalid') || 'Invalid URL format');
+            return;
+        }
+
+        // Get selected language
+        const selectedLang = document.querySelector('input[name="language"]:checked');
+        const language = selectedLang ? selectedLang.value : 'en';
+
+        // Show loading state
+        const originalText = submitBtn.textContent;
+        submitBtn.disabled = true;
+        submitBtn.textContent = i18n.t('common.loading') || 'Processing...';
+
+        try {
+            const response = await this.fetchWithAuth(`${API_URL}/videos/from-url`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ url, language })
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                alert(i18n.t('dashboard.upload.url_success') || `Video queued for download! ID: ${data.id}`);
+                urlInput.value = '';
+                // Refresh transcriptions list
+                await this.loadRecentTranscriptions();
+            } else {
+                const error = await response.json();
+                alert(error.detail || i18n.t('common.error') || 'Upload failed');
+            }
+        } catch (error) {
+            console.error('URL upload error:', error);
+            alert(i18n.t('common.error') || 'An error occurred');
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+        }
     }
 
     async handleFileUpload(file) {

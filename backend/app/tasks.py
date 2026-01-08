@@ -165,6 +165,150 @@ def transcribe_video(self, video_id: str, file_path: str, language: str = "en"):
         db.close()
 
 
+@celery_app.task(bind=True, max_retries=2, default_retry_delay=120)
+def download_from_url(self, video_id: str, url: str, language: str = "en"):
+    """
+    Download video from URL (YouTube, VK, RuTube, etc.) and transcribe it.
+    
+    Args:
+        video_id: UUID of the video record
+        url: Video URL
+        language: Language code for transcription
+    """
+    import yt_dlp
+    from .database import SessionLocal, Video
+    
+    db = SessionLocal()
+    
+    try:
+        # Update status to downloading
+        db.execute(
+            update(Video).where(Video.id == video_id).values(status="downloading")
+        )
+        db.commit()
+        
+        # Create temp directory for download
+        with tempfile.TemporaryDirectory() as temp_dir:
+            output_path = os.path.join(temp_dir, "video.%(ext)s")
+            
+            # yt-dlp options
+            ydl_opts = {
+                'format': 'bestaudio/best',  # Prefer audio for transcription
+                'outtmpl': output_path,
+                'quiet': True,
+                'no_warnings': True,
+                'extract_flat': False,
+                'max_filesize': 500 * 1024 * 1024,  # 500MB limit
+                'postprocessors': [{
+                    'key': 'FFmpegExtractAudio',
+                    'preferredcodec': 'wav',
+                    'preferredquality': '192',
+                }],
+            }
+            
+            self.update_state(state='DOWNLOADING', meta={'progress': 10})
+            
+            # Download video
+            with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+                info = ydl.extract_info(url, download=True)
+                title = info.get('title', 'Unknown')
+                duration = info.get('duration', 0)
+            
+            # Find downloaded file
+            downloaded_files = list(Path(temp_dir).glob("video.*"))
+            if not downloaded_files:
+                raise Exception("Download failed: no file created")
+            
+            downloaded_file = str(downloaded_files[0])
+            file_size = os.path.getsize(downloaded_file)
+            
+            # Update video record with metadata
+            db.execute(
+                update(Video).where(Video.id == video_id).values(
+                    original_filename=f"{title[:100]}.wav",
+                    file_size=file_size,
+                    duration_seconds=int(duration) if duration else None,
+                    status="processing"
+                )
+            )
+            db.commit()
+            
+            self.update_state(state='TRANSCRIBING', meta={'progress': 50})
+            
+            # Now transcribe using Whisper
+            import whisper
+            model = whisper.load_model(settings.WHISPER_MODEL)
+            
+            result = model.transcribe(
+                downloaded_file,
+                language=language if language != "auto" else None,
+                task="transcribe",
+                verbose=False
+            )
+            
+            # Get transcription text and segments
+            transcription_text = result["text"].strip()
+            segments = result.get("segments", [])
+            detected_language = result.get("language", language)
+            
+            # Format segments with timestamps
+            formatted_segments = []
+            for seg in segments:
+                formatted_segments.append({
+                    "start": seg["start"],
+                    "end": seg["end"],
+                    "text": seg["text"].strip()
+                })
+            
+            # Create transcription record
+            from .database import Transcription
+            transcription = Transcription(
+                id=uuid.uuid4(),
+                video_id=video_id,
+                language=detected_language,
+                text=transcription_text,
+                segments=formatted_segments,
+                status="completed",
+                processing_time_seconds=0,
+                created_at=datetime.utcnow()
+            )
+            
+            db.add(transcription)
+            
+            # Update video status
+            db.execute(
+                update(Video).where(Video.id == video_id).values(
+                    status="completed",
+                    processed_at=datetime.utcnow()
+                )
+            )
+            
+            db.commit()
+            
+            return {
+                "status": "success",
+                "video_id": str(video_id),
+                "transcription_id": str(transcription.id),
+                "title": title,
+                "duration_seconds": duration
+            }
+            
+    except Exception as e:
+        # Update status to error
+        db.execute(
+            update(Video).where(Video.id == video_id).values(
+                status="error",
+                error_message=str(e)[:500]
+            )
+        )
+        db.commit()
+        
+        raise self.retry(exc=e)
+        
+    finally:
+        db.close()
+
+
 @celery_app.task(bind=True, max_retries=2)
 def generate_summary(self, transcription_id: str, text: str, language: str = "en"):
     """

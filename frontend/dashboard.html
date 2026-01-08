@@ -246,17 +246,67 @@
             <section class="dashboard-section upload-section">
                 <h2 data-i18n="dashboard.upload.title">Upload New Video</h2>
 
-                <div class="upload-zone" id="upload-zone">
-                    <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                        <polyline points="17 8 12 3 7 8"></polyline>
-                        <line x1="12" y1="3" x2="12" y2="15"></line>
-                    </svg>
-                    <h3 data-i18n="dashboard.upload.drag_drop">Drag and drop your files here</h3>
-                    <p data-i18n="dashboard.upload.browse">or click to browse</p>
-                    <p class="upload-formats" data-i18n="dashboard.upload.supported">Supported: MP4, MOV, AVI, MP3, WAV
-                        • Max 1GB</p>
-                    <input type="file" id="file-input" accept=".mp4,.mov,.avi,.mkv,.webm,.mp3,.wav,.m4a" class="hidden">
+                <!-- Upload Tabs -->
+                <div class="upload-tabs">
+                    <button class="upload-tab active" data-upload-tab="file">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        <span data-i18n="dashboard.upload.tab_file">Upload File</span>
+                    </button>
+                    <button class="upload-tab" data-upload-tab="url">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                        </svg>
+                        <span data-i18n="dashboard.upload.tab_url">From URL</span>
+                    </button>
+                </div>
+
+                <!-- File Upload Tab Content -->
+                <div class="upload-tab-content active" id="upload-file-content">
+                    <div class="upload-zone" id="upload-zone">
+                        <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        <h3 data-i18n="dashboard.upload.drag_drop">Drag and drop your files here</h3>
+                        <p data-i18n="dashboard.upload.browse">or click to browse</p>
+                        <p class="upload-formats" data-i18n="dashboard.upload.supported">Supported: MP4, MOV, AVI, MP3,
+                            WAV
+                            • Max 1GB</p>
+                        <input type="file" id="file-input" accept=".mp4,.mov,.avi,.mkv,.webm,.mp3,.wav,.m4a"
+                            class="hidden">
+                    </div>
+                </div>
+
+                <!-- URL Upload Tab Content -->
+                <div class="upload-tab-content" id="upload-url-content">
+                    <div class="url-upload-form">
+                        <div class="platform-icons">
+                            <span title="YouTube">📺</span>
+                            <span title="VK Video">💠</span>
+                            <span title="RuTube">🔴</span>
+                            <span title="TikTok">🎵</span>
+                            <span title="Vimeo">▶️</span>
+                        </div>
+                        <p class="url-hint" data-i18n="dashboard.upload.url_hint">Paste a video URL from YouTube, VK,
+                            RuTube, TikTok, or other platforms</p>
+                        <div class="url-input-group">
+                            <input type="url" id="video-url-input" class="form-input"
+                                placeholder="https://youtube.com/watch?v=..."
+                                data-i18n-placeholder="dashboard.upload.url_placeholder">
+                            <button class="btn btn-primary" id="submit-url-btn" data-i18n="dashboard.upload.url_submit">
+                                Download & Transcribe
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="upload-progress hidden" id="upload-progress">

@@ -95,6 +95,7 @@ class Video(Base):
     # Processing status
     status: Mapped[str] = mapped_column(String(20), default="pending")
     error_message: Mapped[Optional[str]] = mapped_column(Text)
+    source_url: Mapped[Optional[str]] = mapped_column(String(1000))  # For URL uploads
     
     # Timestamps
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.utcnow)
