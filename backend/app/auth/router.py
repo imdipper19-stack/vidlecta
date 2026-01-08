@@ -116,9 +116,10 @@ async def register(
     await db.commit()
     await db.refresh(user)
     
-    # TODO: Send email verification
-    # verification_token = create_email_verification_token(str(user.id))
-    # await send_verification_email(user.email, verification_token)
+    # Send email verification
+    from app.email_service import email_service
+    verification_token = create_email_verification_token(str(user.id))
+    await email_service.send_verification_email(user.email, verification_token, user.display_name or user.username)
     
     return UserResponse(
         id=str(user.id),
