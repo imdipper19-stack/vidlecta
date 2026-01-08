@@ -43,4 +43,4 @@ python-dotenv==1.0.0
 httpx==0.26.0
 
 # Video downloading from URLs
-yt-dlp==2024.1.26
+yt-dlp
