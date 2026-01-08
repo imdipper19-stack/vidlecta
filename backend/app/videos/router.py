@@ -135,11 +135,17 @@ async def upload_video(
     db.add(video)
     await db.commit()
     
-    # Save file to temporary location for processing
-    import tempfile
+    # Save file to shared uploads directory for processing
     import os
-    temp_dir = tempfile.mkdtemp()
-    temp_file_path = os.path.join(temp_dir, file.filename)
+    import uuid as uuid_lib
+    
+    # Use shared uploads directory (mounted in both backend and celery-worker)
+    uploads_dir = "/app/uploads/temp"
+    os.makedirs(uploads_dir, exist_ok=True)
+    
+    # Use unique filename to avoid collisions
+    file_ext = os.path.splitext(file.filename)[1]
+    temp_file_path = os.path.join(uploads_dir, f"{uuid_lib.uuid4()}{file_ext}")
     with open(temp_file_path, "wb") as f:
         f.write(contents)
     
