@@ -116,14 +116,19 @@ def transcribe_video(self, video_id: str, file_path: str, language: str = "en"):
                     "text": seg["text"].strip()
                 })
             
+            # Get user_id from Video
+            video = db.query(Video).filter(Video.id == video_id).first()
+            if not video:
+                raise Exception(f"Video not found: {video_id}")
+            
             # Create transcription record
             transcription = Transcription(
                 id=uuid.uuid4(),
                 video_id=video_id,
+                user_id=video.user_id,
                 language=detected_language,
                 text=transcription_text,
-                segments=formatted_segments,
-                status="completed",
+                word_count=len(transcription_text.split()),
                 processing_time_seconds=0,  # TODO: Calculate actual time
                 created_at=datetime.utcnow()
             )
