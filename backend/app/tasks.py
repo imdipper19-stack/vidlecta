@@ -270,10 +270,9 @@ def download_from_url(self, video_id: str, url: str, language: str = "en"):
             transcription = Transcription(
                 id=uuid.uuid4(),
                 video_id=video_id,
+                user_id=video.user_id,
                 language=detected_language,
                 text=transcription_text,
-                segments=formatted_segments,
-                status="completed",
                 processing_time_seconds=0,
                 created_at=datetime.utcnow()
             )
